@@ -76,3 +76,18 @@ class WiningToken(Tokens):
 
 
 class Player:
+    def play(self):
+        while True:
+            option = input("Menu\n==========\nSelect and option: \n1.Set up\n2.Play\n3.Quit")
+            if option == 1:
+                Admin.set_number_of_tokens()
+                Admin.set_timelimit()
+                Admin.set_max_tries()
+                Admin.set_players()
+            elif option == 2:
+                Tokens.generate_tokens()
+                Board.flip()
+            elif option == 3:
+                quit()
+            else:
+                print("Invalid values!")
