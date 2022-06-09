@@ -29,23 +29,23 @@ class Board:
     Attempts = Admin.set_max_tries()
 
     def flip(self):
-        time = self.Time
-        attempt = 0
-        while time < Admin.set_timelimit() and attempt < Admin.set_max_tries():
-            countdown()
+        timeleft = self.Time
+        current_attempt = 0
+        while timeleft == 0 and current_attempt >= self.Attempts:
+            timeleft = timeleft - time.time()
             if Tokens.sides is False:
                 x = input("Enter the x-axis coordinate of the winning coin: ")
                 y = input("Enter the y-axis coordinate of the winning coin: ")
                 choice = str((x, y))
+                if Tokens.token_coordinates == choice:
+                    Tokens.sides = True
                 if choice == WiningToken.generate_win_token():
                     print("You win!")
                     break
             else:
                 print("Invalid choice, token is already flipped!")
 
-
-
-            attempt += 1
+            current_attempt += 1
 
 class Tokens(Board):
     sides = False
