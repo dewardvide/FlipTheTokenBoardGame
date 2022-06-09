@@ -46,21 +46,26 @@ class Board:
                 print("Invalid choice, token is already flipped!")
 
             current_attempt += 1
-
+            
 class Tokens(Board):
-    sides = False
-    token_coordinates = ""
-    generated_tokens = 0
-    def gen_tokens:
-        while generated_tokens <= Admin.set_number_of_tokens()[0]:
-            def coordinates(self):
-                rows = int(Admin.set_number_of_tokens()[1])
-                columns = int(Admin.set_number_of_tokens()[2])
-                return rows, columns
-
-            token_coordinates = str(coordinates())
+    def generate_tokens:
+        list_of_tokens = []
+        sides = False
+        token_coordinates = ""
+        generated_tokens = 0
+        x = 0
+        y = 0
+        while generated_tokens < Board.Total_tokens:
+            while x < Admin.set_number_of_tokens()[1]:
+                x += 1
+                continue
+            while y < Admin.set_number_of_tokens()[2]:
+                y += 1
+                continue
+            token_coordinates = str((x, y))
+            list_of_tokens.append(token_coordinates)
             generated_tokens += 1
-            return token_coordinates
+        return sides, list_of_tokens
 
 class WiningToken(Tokens):
     def generate_win_token(self):
