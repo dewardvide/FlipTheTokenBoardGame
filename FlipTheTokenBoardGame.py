@@ -51,9 +51,10 @@ class Board:
 
             current_attempt += 1
 
-        if current_attempt == self.attempts:
-            print("You have no chances left!")
-            
+            if current_attempt == self.attempts:
+                print("You have no chances left!")
+            break
+
 class Tokens(Board):
     def generate_tokens(self, board_admin):
         list_of_tokens = []
