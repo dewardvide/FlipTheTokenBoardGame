@@ -37,20 +37,23 @@ class Board:
     def flip(self, x, y):
         time_left = self.time
         current_attempt = 0
-        while time_left == 0 and current_attempt >= self.attempts:
-            time_left = time_left - time.time()
-            if Tokens.sides is False:
-                choice = str((x, y))
-                if choice == Tokens.generate_tokens(Tokens, board_admin)[2]:
-                    Tokens.sides = True
-                if choice == WiningToken.generate_win_token(WiningToken):
-                    print("You win!")
-                    break
+        while time_left > 0 and current_attempt >= self.attempts:
+            time_left = time.time() - time_left
+            if choice in Tokens.list_of_tokens and Tokens.sides is False:
+                Tokens.sides = True
+                if choice == WiningToken.wining_token:
+                    return "You win!"
+                else:
+                    print("Please try again.\n")
+                    print(time_left)
             else:
                 print("Invalid choice, token is already flipped!")
 
             current_attempt += 1
 
+        if current_attempt == self.attempts:
+            print("You have no chances left!")
+            
 class Tokens(Board):
     def generate_tokens(self, board_admin):
         list_of_tokens = []
